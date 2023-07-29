@@ -4,15 +4,17 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 import jpabook.jpashop.domain.Member;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository //스프링 빈으로 등록(@Component를 포함하므로)
+@RequiredArgsConstructor
 public class MemberRepository {
 
-    @PersistenceContext
-    private EntityManager em;//스프링이 자동으로 생성해서 주입해줌
+    private final EntityManager em;//스프링이 자동으로 생성해서 주입해줌(생성자에서 autowired)
 
     public void save(Member member) {
         em.persist(member);
