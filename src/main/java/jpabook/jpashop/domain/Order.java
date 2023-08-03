@@ -1,7 +1,9 @@
 package jpabook.jpashop.domain;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.aspectj.weaver.ast.Or;
 
@@ -11,9 +13,11 @@ import java.util.List;
 
 import static jakarta.persistence.FetchType.*;
 
+//cascade = CascadeType.ALL => order만 delivery, orderItem 을 사용하기 때문에 cascade 사용할 수 있었음, 헷갈리면 안쓰는게 낫다. 나중에 리팩토링 하는걸로
 @Entity
 @Table(name = "orders") //이름 없으면 테이블명이 Order가 됨
 @Getter @Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED) // protected Order() {} 와 동일
 public class Order {
 
     @Id @GeneratedValue // db에 자동 생성(개발자가 안 지정해줘도 됌)
