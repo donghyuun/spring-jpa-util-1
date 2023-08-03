@@ -1,5 +1,5 @@
 spring:
-# 따로 설정 없으면 in-memory 로 스프링 부트가 작동한다.
+#  # 따로 설정 없으면 in-memory 로 스프링 부트가 작동한다.
 #  datasource:
 #    url: jdbc:h2:mem:test #in-memory 매핑
 #    username: sa

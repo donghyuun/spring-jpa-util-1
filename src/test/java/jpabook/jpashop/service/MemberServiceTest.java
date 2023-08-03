@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest //스프링과 같이 테스트하기 위해
-@Transactional //rollback 시키기 위해
+@Transactional //"테스트 내에서(한정)" 테스트 함수 호출을 rollback 시키기 위해
 class MemberServiceTest {
 
     @Autowired MemberService memberService;
@@ -40,7 +40,7 @@ class MemberServiceTest {
 
         //when
         memberService.join(member1);
-        assertThrows(IllegalStateException.class, () -> memberService.join(member2));
+        assertThrows(IllegalStateException.class, () -> memberService.join(member2));//해당 예외 터진게 맞는지 확인
 
         //then
     }
